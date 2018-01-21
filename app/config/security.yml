@@ -1,0 +1,37 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    encoders:
+        LibretaBundle\Entity\Usuario: bcrypt
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        our_db_provider:
+            entity:
+                class: LibretaBundle:Usuario
+                property: username
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+            # Configuramos el firewall usuarios para indicarle el provider, la login_path, login_check y el path del logout
+        usuarios:
+            pattern: /inicio
+            anonymous: ~
+            provider: our_db_provider
+            form_login:
+              login_path: /inicio/login
+              check_path: /inicio/login
+            logout:
+              path: /inicio/logout
+              target: /inicio/login
+        main:
+            anonymous: ~
+
+            # activate different ways to authenticate
+
+            # http_basic: ~
+            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: ~
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html

@@ -1,0 +1,38 @@
+registro:
+    path:     /inicio/registro_usuarios
+    defaults: { _controller: LibretaBundle:Default:showRegistro }
+
+login:
+    path:     /inicio/login
+    defaults: { _controller: LibretaBundle:Default:showLogin}
+
+logout:
+    path:     /inicio/logout
+
+inicio:
+    path:     /inicio
+    defaults: { _controller: LibretaBundle:Default:inicio }
+
+crear_libreta:
+    path:     /inicio/crear_libreta
+    defaults: { _controller: LibretaBundle:Libreta:crearLibreta }
+
+borrar_libreta:
+    path:     /inicio/libretas/borrar/{idLibreta}
+    defaults: { _controller: LibretaBundle:Libreta:borrarLibreta }
+
+crear_nota:
+    path:     /inicio/crear_nota
+    defaults: { _controller: LibretaBundle:Libreta:crearNota }
+
+actualizar_nota:
+    path:     /inicio/actualizar_nota/{idNota}
+    defaults: { _controller: LibretaBundle:Libreta:actualizarNota }
+
+notas:
+    path:     /inicio/notas/{idLibreta}
+    defaults: { _controller: LibretaBundle:Libreta:verNotas }
+
+borrar_nota:
+    path:     /inicio/notas/borrar/{idNota}
+    defaults: { _controller: LibretaBundle:Libreta:borrarNota }

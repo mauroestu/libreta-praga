@@ -1,0 +1,145 @@
+<?php
+
+namespace LibretaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * libreta
+ *
+ * @ORM\Table(name="libreta")
+ * @ORM\Entity(repositoryClass="LibretaBundle\Repository\libretaRepository")
+ */
+class libreta
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=100)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="string", length=500)
+     */
+    private $descripcion;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="activo", type="boolean")
+     */
+    private $activo;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="libretas")
+     * @ORM\JoinColumn(name="usuario", referencedColumnName="id")
+     */
+    private $usuario;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Tipo", inversedBy="libretas")
+     * @ORM\JoinColumn(name="tipo", referencedColumnName="id")
+     */
+    private $tipo;
+
+    /**
+     * @ORM\OneToMany(targetEntity="libreta", mappedBy="libreta")
+     */
+    private $notas;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     *
+     * @return libreta
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     *
+     * @return libreta
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * Set activo
+     *
+     * @param boolean $activo
+     *
+     * @return libreta
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
+
+        return $this;
+    }
+
+    /**
+     * Get activo
+     *
+     * @return bool
+     */
+    public function getActivo()
+    {
+        return $this->activo;
+    }
+}
