@@ -3,6 +3,7 @@
 namespace LibretaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * libreta
@@ -24,6 +25,7 @@ class libreta
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="nombre", type="string", length=100)
      */
     private $nombre;
@@ -51,13 +53,14 @@ class libreta
 
 
     /**
+     * @Assert\NotBlank()
      * @ORM\ManyToOne(targetEntity="Tipo", inversedBy="libretas")
      * @ORM\JoinColumn(name="tipo", referencedColumnName="id")
      */
     private $tipo;
 
     /**
-     * @ORM\OneToMany(targetEntity="libreta", mappedBy="libreta")
+     * @ORM\OneToMany(targetEntity="nota", mappedBy="libreta")
      */
     private $notas;
 

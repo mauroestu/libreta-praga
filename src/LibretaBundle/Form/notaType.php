@@ -24,7 +24,7 @@ class notaType extends AbstractType
     {
         $builder
             ->add('nota',TextType::class)
-            ->add('contenido',TextareaType::class, array("attr" => array("rows" => "5")))
+            ->add('contenido',TextareaType::class, array("attr" => array("id" => "summernote")))
             //->add('activo')
             ->add('libreta', EntityType::class, array(
                 'class' => 'LibretaBundle:libreta',

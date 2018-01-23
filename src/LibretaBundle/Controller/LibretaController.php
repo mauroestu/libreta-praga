@@ -17,7 +17,7 @@ class LibretaController extends Controller
     public function crearLibretaAction(Request $request)
     {
         if($this->getUser() == null) return $this->redirectToRoute('login');
-
+        
         $libreta = new libreta();
         $libreta->setActivo(true);
         $libreta->setUsuario($this->getUser());

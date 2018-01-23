@@ -23,7 +23,9 @@ class libretaType extends AbstractType
     {
         $builder
             ->add('nombre',TextType::class)
-            ->add('descripcion',TextType::class)
+            ->add('descripcion',TextType::class, array('attr' => array(
+              'required' => 'unrequired'
+            )))
             //->add('activo')
             //->add('usuario')
             ->add('tipo', EntityType::class, array(

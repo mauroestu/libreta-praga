@@ -1,12 +1,9 @@
 <?php
-
 namespace LibretaBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
-
 /**
  * Usuario
  *
@@ -23,7 +20,6 @@ class Usuario implements UserInterface
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var string
      *
@@ -31,7 +27,6 @@ class Usuario implements UserInterface
      * @Assert\NotBlank()
      */
     private $nombreCompleto;
-
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
@@ -44,10 +39,12 @@ class Usuario implements UserInterface
      *
      * @ORM\Column(name="correo", type="string", length=255, unique=true)
      * @Assert\NotBlank()
-     * @Assert\Email()
+     * @Assert\Email(
+     *  message = "El email {{ value }} no es un email válido.",
+     *  checkMX = false
+     *)
      */
     private $email;
-
 
     /**
      * @Assert\NotBlank()
@@ -69,40 +66,32 @@ class Usuario implements UserInterface
      */
     private $activo;
 
-
     /**
      * @ORM\OneToMany(targetEntity="libreta", mappedBy="usuario")
      */
     private $libretas;
-
-
+    
     public function getPlainPassword()
     {
         return $this->plainPassword;
     }
-
     public function setPlainPassword($password)
     {
         $this->plainPassword = $password;
     }
-
     public function getSalt()
     {
         // The bcrypt algorithm doesn't require a separate salt.
         // You *may* need a real salt if you choose a different encoder.
         return null;
     }
-
     public function getRoles()
     {
         return array('ROLE_USER');
     }
-
     public function eraseCredentials()
     {
-
     }
-
     /**
      * Get id
      *
@@ -112,7 +101,6 @@ class Usuario implements UserInterface
     {
         return $this->id;
     }
-
     /**
      * Set nombreCompletro
      *
@@ -123,10 +111,8 @@ class Usuario implements UserInterface
     public function setNombreCompleto($nombreCompletro)
     {
         $this->nombreCompleto = $nombreCompletro;
-
         return $this;
     }
-
     /**
      * Get nombreCompletro
      *
@@ -136,18 +122,14 @@ class Usuario implements UserInterface
     {
         return $this->nombreCompleto;
     }
-
-
     public function getUsername()
     {
         return $this->username;
     }
-
     public function setUsername($username)
     {
         $this->username = $username;
     }
-
     /**
      * Set correo
      *
@@ -158,10 +140,8 @@ class Usuario implements UserInterface
     public function setEmail($email)
     {
         $this->email = $email;
-
         return $this;
     }
-
     /**
      * Get correo
      *
@@ -171,7 +151,6 @@ class Usuario implements UserInterface
     {
         return $this->email;
     }
-
     /**
      * Set contrasenia
      *
@@ -182,10 +161,8 @@ class Usuario implements UserInterface
     public function setPassword($password)
     {
         $this->password = $password;
-
         return $this;
     }
-
     /**
      * Get contrasenia
      *
@@ -195,7 +172,6 @@ class Usuario implements UserInterface
     {
         return $this->password;
     }
-
     /**
      * Set activo
      *
@@ -206,10 +182,8 @@ class Usuario implements UserInterface
     public function setActivo($activo)
     {
         $this->activo = $activo;
-
         return $this;
     }
-
     /**
      * Get activo
      *
@@ -226,7 +200,6 @@ class Usuario implements UserInterface
     {
         $this->libretas = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
     /**
      * Add libreta
      *
@@ -237,10 +210,8 @@ class Usuario implements UserInterface
     public function addLibreta(\LibretaBundle\Entity\libreta $libreta)
     {
         $this->libretas[] = $libreta;
-
         return $this;
     }
-
     /**
      * Remove libreta
      *
@@ -250,7 +221,6 @@ class Usuario implements UserInterface
     {
         $this->libretas->removeElement($libreta);
     }
-
     /**
      * Get libretas
      *
