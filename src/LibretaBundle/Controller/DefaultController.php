@@ -10,7 +10,16 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
-    //Pintar el formulario de registro de usuarios y guarda usuarios
+
+    /**
+    * Render the user registration form and save new users.
+    *
+    * @author Mauricio Estuardo Batres Montejo.
+    *
+    * @param Request $request
+    *
+    * @return $this->render()
+    */
     public function showRegistroAction(Request $request)
     {
         if($this->getUser() != null) return $this->redirectToRoute('inicio');
@@ -39,6 +48,13 @@ class DefaultController extends Controller
         return $this->render('LibretaBundle:Default:register.html.twig',array("form" => $formRegistro->createView() ));
     }
 
+    /**
+    *
+    *
+    *
+    *
+    *
+    */
     public function inicioAction()
     {
         if($this->getUser() == null) return $this->redirectToRoute('login');

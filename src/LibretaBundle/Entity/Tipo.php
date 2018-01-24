@@ -12,12 +12,17 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tipo
 {
+
+    const CONST_NOTA_MENTAL = 1;
+    const CONST_NOTA_ENTRETENIMIENTO = 2;
+    const CONST_NOTA_ACADEMICA = 3;
+
     /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
 
@@ -42,6 +47,19 @@ class Tipo
     private $libretas;
 
 
+    /**
+    *Set id
+    *
+    *@param int $id
+    *
+    *@return id
+    */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     /**
      * Get id

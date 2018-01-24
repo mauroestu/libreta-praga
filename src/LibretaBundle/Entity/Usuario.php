@@ -70,7 +70,7 @@ class Usuario implements UserInterface
      * @ORM\OneToMany(targetEntity="libreta", mappedBy="usuario")
      */
     private $libretas;
-    
+
     public function getPlainPassword()
     {
         return $this->plainPassword;
