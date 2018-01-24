@@ -45,6 +45,14 @@ doctrine_migrations:
     name: Application Migrations
     organize_migrations: false # Version >=1.2 Possible values are: "BY_YEAR", "BY_YEAR_AND_MONTH", false
 
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: LibretaBundle\Entity\Usuario
+    from_email:
+        address: "mauroestu18@gmail.com"
+        sender_name: "Mauricio Batres"
+
 # Doctrine Configuration
 doctrine:
     dbal:

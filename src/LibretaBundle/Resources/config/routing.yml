@@ -2,13 +2,6 @@ registro:
     path:     /inicio/registro_usuarios
     defaults: { _controller: LibretaBundle:Default:showRegistro }
 
-login:
-    path:     /inicio/login
-    defaults: { _controller: LibretaBundle:Default:showLogin}
-
-logout:
-    path:     /inicio/logout
-
 inicio:
     path:     /inicio
     defaults: { _controller: LibretaBundle:Default:inicio }
